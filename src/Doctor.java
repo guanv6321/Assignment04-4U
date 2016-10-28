@@ -10,9 +10,8 @@
 public class Doctor {
     private int row;
     private int col;
-    private boolean captured;
       
-    public Doctor(int theRow, int theCol){
+    public Doctor(int row, int col){
         this.row = row;
         this.col = col;     
     }
@@ -20,9 +19,9 @@ public class Doctor {
     public void move(int newRow, int newCol){
         int randomRow = (int)(Math.random()*12);
         int randomCol = (int)(Math.random()*12);
-        if(this.row - row <= 1 && this.col - col <= 1){
-            this.row = row;
-            this.col = col;
+        if(this.row - newRow <= 1 && this.col - newCol <= 1){
+            this.row = newRow;
+            this.col = newCol;
         }else{
             this.row = randomRow;
             this.col = randomCol;

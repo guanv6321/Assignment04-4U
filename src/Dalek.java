@@ -22,7 +22,7 @@ public class Dalek {
         int docRow = doc.getRow();
         int docCol = doc.getCol();
         
-        if(crashed==false){
+        if(!crashed){
             if(this.row - docRow <= 0){
                 this.row++;
             }
@@ -48,7 +48,7 @@ public class Dalek {
     }
     
     public void crash(){
-        crashed = true;
+        this.crashed = true;
     }
     public boolean hasCrashed(Dalek d){
         if(this.row == d.getRow() && this.col == d.getCol()){
