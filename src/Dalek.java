@@ -8,35 +8,43 @@
  * @author guanv6321
  */
 public class Dalek {
-
+    // instance variables for row, col, crashed, and captured
     private int row;
     private int col;
     private boolean crashed;
+    private boolean captured;
 
-    public Dalek(int theRow, int theCol) {
+    // initializing dalek's location
+    public Dalek(int row, int col) {
         this.row = row;
         this.col = col;
     }
 
     public void advancedTowards(Doctor doc) {
-        int docRow = doc.getRow();
-        int docCol = doc.getCol();
+        // variables for doctor's location
+        int row = doc.getRow();
+        int col = doc.getCol();
         
-        if(!crashed){
-            if(this.row - docRow <= 0){
+        // variable for difference between doctor and dalek's location
+        int rowM = this.row - row;
+        int colM = this.col - col;
+        
+        // if dalek did not crash and doctor did not get acptured
+        if(!crashed && !captured){
+            // movement of dalek towards doctor
+            if(rowM <= 0){
                 this.row++;
             }
-            if(this.row - docRow >= 0){
+            if(rowM >= 0){
                 this.row--;
             }
-            if(this.col - docCol <= 0){
+            if(colM <= 0){
                 this.col++;
             }
-            if(this.col - docCol >= 0){
+            if(colM >= 0){
                 this.col--;
             }
-        }
-             
+        }            
     }
 
     public int getRow() {
@@ -50,7 +58,13 @@ public class Dalek {
     public void crash(){
         this.crashed = true;
     }
+    
+    public void captured(){
+        this.captured = true;
+    }
+    
     public boolean hasCrashed(Dalek d){
+        // if dalek crashed another dalek
         if(this.row == d.getRow() && this.col == d.getCol()){
             return true;
         }else{
@@ -58,4 +72,12 @@ public class Dalek {
         }
     }
     
+    public boolean captured(Doctor doc){
+        // if dalek captured doctor 
+        if(this.row == doc.getRow() && this.col == doc.getCol()){
+            return true;
+        }else{
+            return false;
+        }
+    }
 }
